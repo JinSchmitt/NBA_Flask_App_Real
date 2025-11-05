@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ name }}</title>
+</head>
+<body>
+    <h1>{{ name }}</h1>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% else %}
+        <ul>
+        {% for stat, value in data.items() %}
+            <li><strong>{{ stat }}:</strong> {{ value }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <a href="/">Back</a>
+</body>
+</html>
