@@ -1,21 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ name }}</title>
+    <title>{{ player }} - {{ mode }} Stats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a.button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        a.button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>{{ name }}</h1>
+    <h1>{{ player }} - {{ mode }} Stats</h1>
 
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
+    {% if stats %}
+        <table>
+            <tr>
+                <th>Stat</th>
+                <th>Value</th>
+            </tr>
+            {% for stat, value in stats.items() %}
+            <tr>
+                <td>{{ stat }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     {% else %}
-        <ul>
-        {% for stat, value in data.items() %}
-            <li><strong>{{ stat }}:</strong> {{ value }}</li>
-        {% endfor %}
-        </ul>
+        <p>No stats found for {{ player }}.</p>
     {% endif %}
 
-    <a href="/">Back</a>
+    <br>
+    <a href="/" class="button">Back to Home</a>
 </body>
 </html>
